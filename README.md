@@ -33,7 +33,7 @@ ejerciciosJava/
 
 ### Bloque 1: Ejercicios 1 a 6
 
-* **Ejercicio 1**: Lectura por teclado con `Scanner` y validación con `hasNextInt()`.
+* **Ejercicio 1**: Lectura por teclado con `Scanner`.
 * **Ejercicio 2**: Funciones de cálculo de importes:
   * `calcularSubtotal(precio, cantidad)`
   * `calcularDescuento(subtotal, porcentaje)`
