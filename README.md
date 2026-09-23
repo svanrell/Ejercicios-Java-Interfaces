@@ -1,35 +1,34 @@
-# 📚 Ejercicios de Java — Desarrollo de Interfaces (DDI)
+# Ejercicios de Java — Desarrollo de Interfaces (DDI)
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![DDI](https://img.shields.io/badge/M%C3%B3dulo-DDI-blue?style=for-the-badge)
 ![Estado](https://img.shields.io/badge/Estado-Completado-success?style=for-the-badge)
 ![Licencia](https://img.shields.io/badge/Licencia-Educativa-lightgrey?style=for-the-badge)
 
-Colección completa de ejercicios prácticos en **Java** desarrollados para el módulo de **Desarrollo de Interfaces (DDI)** en Formación Profesional (Grado Superior).
+Colección completa de ejercicios prácticos en Java desarrollados para el módulo de Desarrollo de Interfaces (DDI) en Formación Profesional (Grado Superior).
 
-El repositorio abarca desde los fundamentos del lenguaje (entrada/salida, condicionales, bucles y funciones) hasta conceptos avanzados de **Programación Orientada a Objetos (POO)**, colecciones (`ArrayList`), modelado de relaciones 1:N y enumerados (`enum`).
-
----
-
-## 📑 Tabla de Contenidos
-
-1. [Estructura del Proyecto](#-estructura-del-proyecto)
-2. [Diagrama de Clases](#-diagrama-de-clases)
-3. [Guía de Ejercicios](#-guía-de-ejercicios)
-   - [Bloque 1: Fundamentos y Funciones (1 - 5)](#bloque-1-fundamentos-y-funciones-ejercicios-1-a-5)
-   - [Bloque 2: POO y Clase Tarea (6 - 11)](#bloque-2-poo-y-gestión-de-tareas-ejercicios-6-a-11)
-   - [Bloque 3: Relaciones, Estadísticas y Enums (12 - 14)](#bloque-3-relaciones-estadísticas-y-enums-ejercicios-12-a-14)
-4. [Requisitos y Ejecución](#-requisitos-y-ejecución)
+El proyecto abarca desde la sintaxis básica y estructuras de control hasta conceptos avanzados de Programación Orientada a Objetos (POO), manejo de colecciones (`ArrayList`), asociaciones 1:N y tipos enumerados (`enum`).
 
 ---
 
-## 📁 Estructura del Proyecto
+## Tabla de Contenidos
+
+1. [Estructura del Proyecto](#estructura-del-proyecto)
+2. [Diagrama de Clases](#diagrama-de-clases)
+3. [Guía de Ejercicios](#guía-de-ejercicios)
+   - [Bloque 1: Ejercicios 1 a 6](#bloque-1-ejercicios-1-a-6)
+   - [Bloque 2: Ejercicios 7 a 14](#bloque-2-ejercicios-7-a-14)
+4. [Requisitos y Ejecución](#requisitos-y-ejecución)
+5. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+
+---
+
+## Estructura del Proyecto
 
 ```text
 ejerciciosJava/
 ├── .gitignore
 ├── README.md
-├── ejerciciosJava.iml
 └── src/
     ├── Ejercicio1.java    # Entrada por teclado y cálculo de edad
     ├── Ejercicio2.java    # Cálculo de precios con descuentos
@@ -49,9 +48,9 @@ ejerciciosJava/
 
 ---
 
-## 🧩 Diagrama de Clases
+## Diagrama de Clases
 
-Modelado de las entidades desarrolladas en los ejercicios avanzados:
+Modelado de entidades para la gestión de proyectos y tareas:
 
 ```mermaid
 classDiagram
@@ -102,9 +101,9 @@ classDiagram
 
 ---
 
-## 📖 Guía de Ejercicios
+## Guía de Ejercicios
 
-### Bloque 1: Fundamentos y Funciones (Ejercicios 1 a 5)
+### Bloque 1: Ejercicios 1 a 6
 
 | Ejercicio | Conceptos Clave | Descripción |
 | :--- | :--- | :--- |
@@ -113,33 +112,26 @@ classDiagram
 | **[Ejercicio 3](src/Ejercicio3.java)** | `switch-case`, validación condicional | Clasifica niveles de prioridad numérica (1 a 3) devolviendo su etiqueta descriptiva. |
 | **[Ejercicio 4](src/Ejercicio4.java)** | Arrays (`String[]`), bucle `for` | Formatea y numera una lista estática de tareas en una cadena de texto. |
 | **[Ejercicio 5](src/Ejercicio5.java)** | Búsqueda lineal, `equalsIgnoreCase` | Busca una tarea por su nombre ignorando mayúsculas/minúsculas y devuelve su índice. |
+| **[Ejercicio 6](src/Ejercicio6.java)** | Clases, Encapsulamiento, `toString` | Creación de la clase `Tarea` (título, descripción, completada) con getters, setters y representación textual. |
 
 ---
 
-### Bloque 2: POO y Gestión de Tareas (Ejercicios 6 a 11)
+### Bloque 2: Ejercicios 7 a 14
 
 | Ejercicio | Conceptos Clave | Descripción |
 | :--- | :--- | :--- |
-| **[Ejercicio 6](src/Ejercicio6.java)** | Clases, Encapsulamiento, `toString` | Creación de la clase `Tarea` (título, descripción, estado completada) con getters, setters y representación textual. |
 | **[Ejercicio 7](src/Ejercicio7.java)** | Modificación de estado | Implementación del método `completar()`, verificando el cambio de estado antes y después. |
 | **[Ejercicio 8](src/Ejercicio8.java)** | `ArrayList<Tarea>`, `List.of` | Colecciones dinámicas de tareas y método `mostrarTareas()` con índices. |
-| **[Ejercicio 9](src/Ejercicio9.java)** | `remove()`, manejo de excepciones `try-catch` | Borrado seguro de tareas por posición con captura de posibles `IndexOutOfBoundsException`. |
+| **[Ejercicio 9](src/Ejercicio9.java)** | `remove()`, manejo de excepciones `try-catch` | Borrado seguro de tareas por posición con captura de posibles excepciones de índice. |
 | **[Ejercicio 10](src/Ejercicio10.java)** | Filtrado, `String.contains()` | Búsqueda y filtrado dinámico de tareas cuyo título contiene una subcadena específica. |
 | **[Ejercicio 11](src/Ejercicio11.java)** | Algoritmos de separación y filtrado | Métodos para segregar tareas en dos sublistas: completadas e incompletas. |
-
----
-
-### Bloque 3: Relaciones, Estadísticas y Enums (Ejercicios 12 a 14)
-
-| Ejercicio | Conceptos Clave | Descripción |
-| :--- | :--- | :--- |
 | **[Ejercicio 12](src/Ejercicio12.java)** | Asociación 1:N, agregación | Clase `Proyecto` que gestiona su propia colección de tareas mediante métodos `addTarea` y `removeTarea`. |
-| **[Ejercicio 13](src/Ejercicio13.java)** | Métricas y estadísticas | Métodos de conteo (`getNumeroTareas`, `getNumeroCompletadas`, `getNumeroPendientes`) y generación de resumen visual. |
+| **[Ejercicio 13](src/Ejercicio13.java)** | Métricas y estadísticas | Métodos de conteo (`getNumeroTareas`, `getNumeroCompletadas`, `getNumeroPendientes`) y resumen visual. |
 | **[Ejercicio 14](src/Ejercicio14.java)** | `enum Prioridad`, composición avanzada | Incorporación del tipo enumerado `Prioridad` (`BAJA`, `MEDIA`, `ALTA`) al ciclo de vida completo de cada tarea. |
 
 ---
 
-## 🚀 Requisitos y Ejecución
+## Requisitos y Ejecución
 
 ### Requisitos previos
 * **Java Development Kit (JDK)**: Versión 11 o superior (recomendado JDK 17 o 21).
@@ -160,12 +152,8 @@ java -cp src Ejercicio13
 
 ---
 
-## 💻 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 * **Lenguaje:** Java SE
 * **Herramienta de control de versiones:** Git
 * **IDE recomendado:** IntelliJ IDEA / Eclipse / VS Code
-
----
-
-Desarrollado con ❤️ para la asignatura de **Desarrollo de Interfaces**.
