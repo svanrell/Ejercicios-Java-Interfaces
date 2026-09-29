@@ -1,8 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 public class Ejercicio17 {
 
@@ -19,7 +18,7 @@ public class Ejercicio17 {
         }
 
         public Tarea(String titulo, String descripcion, boolean completada, Prioridad prioridad) {
-            if (titulo.isEmpty() || titulo == null || titulo.isBlank()){
+            if (titulo == null || titulo.isBlank()){
                 throw new IllegalArgumentException("El título no puede estar vacío ni puede ser null");
             }
 
@@ -102,6 +101,12 @@ public class Ejercicio17 {
                 false,
                 Tarea.Prioridad.MEDIA);
 
+        Tarea tareaNormal1 = new Tarea(
+                "Practicar Python",
+                "Aprender y optimizar algoritmos",
+                false,
+                Tarea.Prioridad.ALTA);
+
         TareaUrgente tareaUrgente = new TareaUrgente(
                 "Entrega de práctica DDI",
                 "Subir el repositorio de Git antes del plazo final",
@@ -109,23 +114,22 @@ public class Ejercicio17 {
                 Tarea.Prioridad.ALTA,
                 LocalDate.now());
 
-        System.out.println("Objeto Tarea:");
-        System.out.println(tareaNormal);
+        Tarea tareaBaja = new Tarea(
+                "Actualizar notas",
+                "Revisar apuntes de clase",
+                false,
+                Tarea.Prioridad.BAJA);
 
-        System.out.println("\nObjeto TareaUrgente:");
-        System.out.println(tareaUrgente);
+        ArrayList<Tarea> listaTareas = new ArrayList<>(List.of(tareaNormal, tareaNormal1, tareaUrgente, tareaBaja));
 
-        System.out.println("\nModificando estado...");
-        tareaNormal.completar();
-        System.out.println("Tarea normal completada: " + tareaNormal);
+        listaTareas.sort(Comparator.comparing(tarea -> tarea.getTitulo()));
 
-        tareaUrgente.completar();
-        System.out.println("Tarea urgente completada: " + tareaUrgente);
+        System.out.println("1. TAREAS ORDENADAS POR TÍTULO");
+        listaTareas.forEach(tarea -> System.out.println(tarea));
 
-        System.out.println("\nLista combinada:");
-        ArrayList<Tarea> listaTareas = new ArrayList<>(List.of(tareaNormal, tareaUrgente));
-        for (Tarea tarea : listaTareas) {
-            System.out.println("- " + tarea);
-        }
+        listaTareas.sort(Comparator.comparing(tarea -> tarea.getPrioridad()));
+
+        System.out.println("\n2. TAREAS ORDENADAS POR PRIORIDAD");
+        listaTareas.forEach(tarea -> System.out.println(tarea));
     }
 }
