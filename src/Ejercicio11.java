@@ -37,8 +37,8 @@ public class Ejercicio11 {
             this.completada = completada;
         }
 
-        public boolean completar() {
-            return completada = true;
+        public void completar() {
+             this.completada = true;
         }
 
         @Override
