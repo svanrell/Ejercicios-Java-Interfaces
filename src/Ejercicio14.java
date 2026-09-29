@@ -27,7 +27,7 @@ public class Ejercicio14 {
             return completada;
         }
 
-        public Prioridad getPrioridad(){
+        public Prioridad getPrioridad() {
             return prioridad;
         }
 
@@ -43,12 +43,12 @@ public class Ejercicio14 {
             this.completada = completada;
         }
 
-        public void setPrioridad(Prioridad prioridad){
+        public void setPrioridad(Prioridad prioridad) {
             this.prioridad = prioridad;
         }
 
-        public boolean completar() {
-            return completada = true;
+        public void completar() {
+            this.completada = true;
         }
 
         public enum Prioridad {
@@ -59,7 +59,8 @@ public class Ejercicio14 {
 
         @Override
         public String toString() {
-            return "Tarea: " + titulo + " | Descripción: " + descripcion + " | Completada: " + completada + " | Prioridad: " + prioridad;
+            return "Tarea: " + titulo + " | Descripción: " + descripcion + " | Completada: " + completada
+                    + " | Prioridad: " + prioridad;
         }
     }
 
@@ -136,8 +137,7 @@ public class Ejercicio14 {
         Tarea tarea8 = new Tarea("Documentar código", "Generar JavaDoc del proyecto", false, Tarea.Prioridad.BAJA);
 
         Proyecto proyecto1 = new Proyecto("Proyecto DI", new ArrayList<>(List.of(
-                tarea1, tarea2, tarea3, tarea4, tarea5, tarea6, tarea7, tarea8
-        )));
+                tarea1, tarea2, tarea3, tarea4, tarea5, tarea6, tarea7, tarea8)));
 
         System.out.println("Tareas del proyecto " + proyecto1.getNombre() + ":\n");
         for (Tarea tarea : proyecto1.getTareas()) {
