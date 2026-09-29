@@ -17,7 +17,7 @@ public class Ejercicio16 {
         }
 
         public Tarea(String titulo, String descripcion, boolean completada, Prioridad prioridad) {
-            if (titulo.isEmpty() || titulo == null || titulo.isBlank()){
+            if (titulo == null || titulo.isBlank()){
                 throw new IllegalArgumentException("El título no puede estar vacío ni puede ser null");
             }
 
