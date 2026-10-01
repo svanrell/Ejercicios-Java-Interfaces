@@ -102,43 +102,119 @@ public class Ejercicio19 {
     }
 
     public static void mostrarTareas(List<Tarea> tareas) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
         for (Tarea tarea : tareas) {
             if (tarea == null) {
                 System.out.println("La tarea no puede ser null");
+                continue;
             }
             System.out.println(tarea);
         }
+        System.out.println("Se han mostrado todas las tareas que existen");
     }
 
     public static void buscarTareas(List<Tarea> tareas, String texto) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
+        boolean encontrada = false;
         for (Tarea tarea : tareas) {
-            if (tarea.getTitulo().equalsIgnoreCase(texto)) {
+            if (tarea != null && tarea.getTitulo().equalsIgnoreCase(texto)) {
+                System.out.println(tarea);
+                encontrada = true;
+            }
+        }
+        if (!encontrada) {
+            System.out.println("No se ha encontrado ninguna tarea con el título: " + texto);
+        }
+        System.out.println("Se han buscado todas las tareas");
+    }
+
+    public static void mostrarTareasPendientes(List<Tarea> tareas) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
+
+        for (Tarea tarea : tareas) {
+            if (tarea != null && !tarea.getCompletada()) {
                 System.out.println(tarea);
             }
         }
+        System.out.println("Se han mostrado todas las tareas pendientes");
     }
 
-    public static void main(String[] args) {
-        Tarea tareaNormal = new Tarea(
-                "Estudiar Java",
-                "Repasar conceptos de POO y métodos",
-                false,
-                Tarea.Prioridad.MEDIA);
+    public static void mostrarTareasCompletadas(List<Tarea> tareas) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
 
-        TareaUrgente tareaUrgente = new TareaUrgente(
-                "Entrega de práctica DDI",
-                "Subir el repositorio de Git antes del plazo final",
-                false,
-                Tarea.Prioridad.ALTA,
-                LocalDate.now());
+        for (Tarea tarea : tareas) {
+            if (tarea != null && tarea.getCompletada()) {
+                System.out.println(tarea);
+            }
+        }
+        System.out.println("Se han mostrado todas las tareas completadas");
+    }
 
-        List<Tarea> tareas = new ArrayList<>(List.of(tareaNormal, tareaUrgente));
+    public static void completarTareas(List<Tarea> tareas, int index) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
 
-        Scanner scanner = new Scanner(System.in);
+        if (index < 0 || index >= tareas.size()) {
+            System.out.println("El número introducido no corresponde a ninguna tarea existente");
+            return;
+        }
 
-        gestionarMenu(scanner, tareas);
+        tareas.get(index).completar();
+        System.out.println("La tarea: " + tareas.get(index) + " se ha completado correctamente");
+    }
 
-        scanner.close();
+    public static void eliminarTarea(List<Tarea> tareas, int index) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
+
+        if (index < 0 || index >= tareas.size()) {
+            System.out.println("El número introducido no corresponde a ninguna tarea existente");
+            return;
+        }
+
+        tareas.remove(index);
+        System.out.println("La tarea de índice: " + index + " se ha eliminado correctamente");
+    }
+
+    public static void mostrarEstadisticas(List<Tarea> tareas) {
+        if (tareas == null || tareas.isEmpty()) {
+            System.out.println("No se pueden introducir valores NULL o vacíos...");
+            return;
+        }
+
+        int total = tareas.size();
+        int completadas = 0;
+        int pendientes = 0;
+
+        for (Tarea tarea : tareas) {
+            if (tarea != null) {
+                if (tarea.getCompletada()) {
+                    completadas++;
+                } else {
+                    pendientes++;
+                }
+            }
+        }
+
+        System.out.println("Total de tareas: " + total);
+        System.out.println("Tareas completadas: " + completadas);
+        System.out.println("Tareas pendientes: " + pendientes);
     }
 
     private static void gestionarMenu(Scanner scanner, List<Tarea> tareas) {
@@ -196,6 +272,7 @@ public class Ejercicio19 {
 
                 System.out.println("\n¿Qué prioridad tiene? (BAJA/MEDIA/ALTA)");
                 String prioridadTexto = scanner.next().toUpperCase();
+                scanner.nextLine();
                 Tarea.Prioridad prioridad;
                 switch (prioridadTexto) {
                     case "BAJA":
@@ -228,42 +305,86 @@ public class Ejercicio19 {
 
             case 3:
                 System.out.println("\nIntroduce el título de la tarea: ");
-                while (!scanner.hasNextLine()) {
-                    System.out.println("Introduce el título correctamente: ");
-                    scanner.next();
+                String textoBuscar = scanner.nextLine();
+                while (textoBuscar.isBlank()) {
+                    System.out.println("El título no puede estar vacío. Introduce el título: ");
+                    textoBuscar = scanner.nextLine();
                 }
-                String Titulo = scanner.nextLine();
                 System.out.println("\nBuscando tareas...");
-                buscarTareas(tareas, Titulo);
+                buscarTareas(tareas, textoBuscar);
                 break;
 
             case 4:
                 System.out.println("\nMostrando tareas pendientes...");
-                //mostrar tareas pendientes
+                mostrarTareasPendientes(tareas);
                 break;
+
             case 5:
                 System.out.println("\nMostrando tareas completadas...");
-                //mostrar tareas completadas
+                mostrarTareasCompletadas(tareas);
                 break;
+
             case 6:
+                System.out.println("\nIntroduce el índice de la tarea a completar: ");
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Introduce un número válido: ");
+                    scanner.next();
+                }
+
+                int index = scanner.nextInt();
+                scanner.nextLine();
                 System.out.println("\nCompletando tarea...");
-                //completar tarea
+                completarTareas(tareas, index);
                 break;
+
             case 7:
+                System.out.println("\nIntroduce el índice de la tarea a eliminar: ");
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Introduce un número válido: ");
+                    scanner.next();
+                }
+
+                int indexEliminar = scanner.nextInt();
+                scanner.nextLine();
                 System.out.println("\nEliminando tarea...");
-                //eliminar tarea
+                eliminarTarea(tareas, indexEliminar);
                 break;
+
             case 8:
-                System.out.println("\nMostrando estadísitcas...");
-                //mostrar estadísticas
+                System.out.println("\nMostrando estadísticas...");
+                mostrarEstadisticas(tareas);
                 break;
+
             case 0:
                 System.out.println("\nSaliendo del programa...");
                 break;
+
             default:
                 System.out.println("Introduce un valor dentro del intervalo permitido (0-8)");
-
         }
+    }
+
+    public static void main(String[] args) {
+        Tarea tareaNormal = new Tarea(
+                "Estudiar Java",
+                "Repasar conceptos de POO y métodos",
+                false,
+                Tarea.Prioridad.MEDIA);
+
+        TareaUrgente tareaUrgente = new TareaUrgente(
+                "Entrega de práctica DDI",
+                "Subir el repositorio de Git antes del plazo final",
+                false,
+                Tarea.Prioridad.ALTA,
+                LocalDate.now());
+
+        List<Tarea> tareas = new ArrayList<>(List.of(tareaNormal, tareaUrgente));
+
+        Scanner scanner = new Scanner(System.in);
+
+        gestionarMenu(scanner, tareas);
+
+        scanner.close();
     }
 }
 
