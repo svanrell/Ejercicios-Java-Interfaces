@@ -274,24 +274,15 @@ public class Ejercicio19 {
 
                 System.out.println("\n¿Qué prioridad tiene? (BAJA/MEDIA/ALTA)");
                 String prioridadTexto = scanner.next().toUpperCase();
-                Tarea.Prioridad prioridad;
-                switch (prioridadTexto) {
-                    case "BAJA":
-                        prioridad = Tarea.Prioridad.BAJA;
-                        break;
-                    case "MEDIA":
-                        prioridad = Tarea.Prioridad.MEDIA;
-                        break;
-                    case "ALTA":
-                        prioridad = Tarea.Prioridad.ALTA;
-                        break;
-                    default:
-                        System.out.println("Prioridad no válida. Debe ser BAJA, MEDIA o ALTA.");
-                        prioridad = null;
-                        break;
-                }
+                Tarea.Prioridad prioridad = switch (prioridadTexto) {
+                    case "BAJA" -> Tarea.Prioridad.BAJA;
+                    case "MEDIA" -> Tarea.Prioridad.MEDIA;
+                    case "ALTA" -> Tarea.Prioridad.ALTA;
+                    default -> null;
+                };
 
                 if (prioridad == null) {
+                    System.out.println("Prioridad no válida. Debe ser BAJA, MEDIA o ALTA.");
                     break;
                 }
 
