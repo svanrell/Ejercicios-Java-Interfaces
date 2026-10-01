@@ -111,12 +111,10 @@ public class Ejercicio13 {
     public static void main(String[] args) {
         Proyecto proyecto1 = new Proyecto("Proyecto DI");
 
-        // 3 tareas completadas
         proyecto1.addTarea(new Tarea("Estudiar Java", "Aprender POO y métodos", true));
         proyecto1.addTarea(new Tarea("Configurar entorno", "Instalar JDK y extensiones", true));
         proyecto1.addTarea(new Tarea("Diseñar interfaz", "Boceto de la ventana principal", true));
 
-        // 5 tareas pendientes
         proyecto1.addTarea(new Tarea("Practicar JavaFX", "Realizar ejercicios de DDI", false));
         proyecto1.addTarea(new Tarea("Subir proyecto", "Subir repositorio a Git", false));
         proyecto1.addTarea(new Tarea("Conectar base de datos", "Crear pool de conexiones", false));
