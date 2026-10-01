@@ -73,10 +73,11 @@ public class Ejercicio19 {
         private LocalDate fechaLimite;
 
         public TareaUrgente(String titulo, String descripcion, boolean completada, Prioridad prioridad,
-                            LocalDate fechaLimite) {
+                LocalDate fechaLimite) {
             super(titulo, descripcion, completada, prioridad);
             this.fechaLimite = fechaLimite;
         }
+
         public LocalDate getFechaLimite() {
             return fechaLimite;
         }
@@ -91,7 +92,8 @@ public class Ejercicio19 {
         }
     }
 
-    public static void crearTarea(List<Tarea> tareas, String titulo, String descripcion, boolean completado, Tarea.Prioridad prioridad) {
+    public static void crearTarea(List<Tarea> tareas, String titulo, String descripcion, boolean completado,
+            Tarea.Prioridad prioridad) {
         try {
             Tarea nuevaTarea = new Tarea(titulo, descripcion, completado, prioridad);
             tareas.add(nuevaTarea);
@@ -272,7 +274,6 @@ public class Ejercicio19 {
 
                 System.out.println("\n¿Qué prioridad tiene? (BAJA/MEDIA/ALTA)");
                 String prioridadTexto = scanner.next().toUpperCase();
-                scanner.nextLine();
                 Tarea.Prioridad prioridad;
                 switch (prioridadTexto) {
                     case "BAJA":
@@ -387,5 +388,3 @@ public class Ejercicio19 {
         scanner.close();
     }
 }
-
-
